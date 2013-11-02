@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Temps Bus BCN</string>
+
+    <!-- Empty ListView -->
+    <string name="no_stop">Encara no tens cap parada!</string>
+    <string name="add_new_stop">Afegeix una pitjant al +</string>
+
+    <!-- Buttons -->
+    <string name="search_button">Buscar</string>
+    <string name="save_button">Guardar</string>
+    <string name="cancel_button">Cancel·lar</string>
+
+    <!-- Url -->
+    <string name="url_temps_bus">http://www.ambmobilitat.cat/AMBtempsbus?codi=%d</string>
+    <string name="url_bus">http://www.ambmobilitat.cat/AMBtempsbus</string>
+
+    <!-- Action Bar -->
+    <string name="action_search">Buscar</string>
+    <string name="action_new">Nova Parada</string>
+    <string name="search_hint">Buscar Parades d\'autobus</string>
+
+    <!-- Save Codes -->
+    <string name="add_name">Nom de la parada</string>
+    <string name="add_code">Codi de la parada</string>
+
+    <!-- Dialog -->
+
+    <string name="delete_code">Esborrar aquesta parada?</string>
+    <string name="accept">Si</string>
+    <string name="cancel">No</string>
+
+    <!-- Toast -->
+    <string name="empty">Hi ha algún camp buit</string>
+
+</resources>

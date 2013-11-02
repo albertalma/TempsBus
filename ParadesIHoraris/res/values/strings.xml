@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Bus Time BCN</string>
+
+    <!-- Empty ListView -->
+    <string name="no_stop">You haven\'t got any stop!</string>
+    <string name="add_new_stop">Add one clicking on +</string>
+
+    <!-- Buttons -->
+    <string name="search_button">Search</string>
+    <string name="save_button">Save</string>
+    <string name="cancel_button">Cancel</string>
+
+    <!-- Url -->
+    <string name="url_temps_bus">http://www.ambmobilitat.cat/AMBtempsbus?codi=%d</string>
+    <string name="url_bus">http://www.ambmobilitat.cat/AMBtempsbus</string>
+
+    <!-- Action Bar -->
+    <string name="action_search">Search</string>
+    <string name="action_new">New Stop</string>
+    <string name="search_hint">Search Bus Stop</string>
+
+    <!-- Save Codes -->
+    <string name="add_name">Stop Name</string>
+    <string name="add_code">Stop Code</string>
+
+    <!-- Dialog -->
+
+    <string name="delete_code">Delete this stop?</string>
+    <string name="accept">Yes</string>
+    <string name="cancel">No</string>
+
+    <!-- Toast -->
+    <string name="empty">There is any field empty</string>
+
+</resources>
