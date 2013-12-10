@@ -10,6 +10,7 @@
     <!-- Buttons -->
     <string name="search_button">Buscar</string>
     <string name="save_button">Guardar</string>
+    <string name="save_stop_button">Guardar Parada</string>
     <string name="cancel_button">Cancel·lar</string>
 
     <!-- Url -->
@@ -19,6 +20,7 @@
     <!-- Action Bar -->
     <string name="action_search">Buscar</string>
     <string name="action_new">Nova Parada</string>
+    <string name="action_refresh">Actualitza</string>
     <string name="search_hint">Buscar Parades d\'autobus</string>
 
     <!-- Save Codes -->
@@ -32,6 +34,14 @@
     <string name="cancel">No</string>
 
     <!-- Toast -->
-    <string name="empty">Hi ha algún camp buit</string>
+    <string name="emptyName">El nom de la parada esta buit</string>
+    <string name="emptyCode">El codi de la parada esta buit</string>
+    <string name="empty">El codi de la parada no pot estar buit</string>
+
+    <!-- DiplayActivity -->
+    <string name="stopNumber">Número de parada: </string>
+    <string name="imminent">imminent </string>
+    <string name="error">Error al carregar l\'informació de la parada</string>
+    <string name="network_error">Problema en la connexió</string>
 
 </resources>

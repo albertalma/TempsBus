@@ -5,6 +5,26 @@
     android:layout_height="match_parent"
     android:background="@color/grey_background" >
 
+    <TextView
+        android:id="@+id/clickOnPlus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_margin="15dp"
+        android:text="@string/add_new_stop"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/noStop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/clickOnPlus"
+        android:layout_centerHorizontal="true"
+        android:text="@string/no_stop"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:visibility="gone" />
+
     <ListView
         android:id="@+id/listView_bus"
         android:layout_width="match_parent"

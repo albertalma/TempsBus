@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -19,6 +20,8 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.almacorp.paradesihoraris.R;
 import com.almacorp.paradesihoraris.adapters.ListAdapter;
@@ -27,15 +30,16 @@ import com.almacorp.paradesihoraris.dialogs.DeleteDialogFragment.DeleteDialogLis
 import com.google.ads.AdRequest;
 import com.google.ads.AdView;
 
-public class MainActivity extends ActionBarActivity implements DeleteDialogListener{
+public class MainActivity extends ActionBarActivity implements
+		DeleteDialogListener {
 
 	private String key;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		loadAd();
+		//loadAd();
 		Intent intent = getIntent();
 		Log.i("Main", "entro");
 		if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
@@ -58,7 +62,7 @@ public class MainActivity extends ActionBarActivity implements DeleteDialogListe
 		// device uniquq ID)
 		adRequest.addTestDevice("F8E8CBBA37CCE7A1DEC480BFEFCE0FED");
 
-		 AdView adView = (AdView) findViewById(R.id.adView);
+		AdView adView = (AdView) findViewById(R.id.adView);
 
 		// Initiate a request to load an ad in test mode.
 		// You can keep this even when you release your app on the market,
@@ -79,11 +83,12 @@ public class MainActivity extends ActionBarActivity implements DeleteDialogListe
 	private ListAdapter adapter;
 
 	private void initializeListView() {
-		Log.e("MAIN","intializeListView");
+		Log.e("MAIN", "intializeListView");
 		ListView listView = (ListView) findViewById(R.id.listView_bus);
 		SharedPreferences codeList = getSharedPreferences(PREFS_NAME, 0);
 		Map<String, ?> mapBus = codeList.getAll();
 		if (!mapBus.isEmpty()) {
+			disableEmptyText();
 			List<String> names = new ArrayList<String>();
 			List<String> codes = new ArrayList<String>();
 			for (Map.Entry<String, ?> entry : mapBus.entrySet()) {
@@ -92,10 +97,25 @@ public class MainActivity extends ActionBarActivity implements DeleteDialogListe
 			}
 			adapter = new ListAdapter(this, names, codes);
 			listView.setAdapter(adapter);
+		} else {
+			showEmptyText();
 		}
-		listView.setEmptyView(findViewById(R.id.emptyListView));
 		setOnClickListener(listView);
 		setOnLongClickListener(listView);
+	}
+
+	private void disableEmptyText() {
+		TextView onPlus = (TextView) findViewById(R.id.clickOnPlus);
+		TextView noStop = (TextView) findViewById(R.id.noStop);
+		onPlus.setVisibility(View.GONE);
+		noStop.setVisibility(View.GONE);
+	}
+
+	private void showEmptyText() {
+		TextView onPlus = (TextView) findViewById(R.id.clickOnPlus);
+		TextView noStop = (TextView) findViewById(R.id.noStop);
+		onPlus.setVisibility(View.VISIBLE);
+		noStop.setVisibility(View.VISIBLE);
 	}
 
 	private void setOnLongClickListener(ListView listView) {
@@ -104,13 +124,13 @@ public class MainActivity extends ActionBarActivity implements DeleteDialogListe
 			public boolean onItemLongClick(AdapterView<?> parent, View view,
 					int position, long id) {
 				key = adapter.getItemName(position);
-				Log.e("MAIN","onLongclickKey: " + key);
+				Log.e("MAIN", "onLongclickKey: " + key);
 				DialogFragment dialog = new DeleteDialogFragment();
-		        dialog.show(getSupportFragmentManager(), "DeleteDialogFragment");
+				dialog.show(getSupportFragmentManager(), "DeleteDialogFragment");
 				return false;
 			}
 		});
-		
+
 	}
 
 	private void setOnClickListener(final ListView listView) {
@@ -127,9 +147,21 @@ public class MainActivity extends ActionBarActivity implements DeleteDialogListe
 
 	/** Called when the user clicks the Send button */
 	public void sendBusCode(String codi) {
-		Intent intent = new Intent(this, DisplayAmbTempsBusActivity.class);
-		intent.putExtra("codi", codi);
-		startActivity(intent);
+		if (codi.isEmpty() || codi.equals(""))
+			showEmptyToast();
+		else {
+			Intent intent = new Intent(this, DisplayAmbTempsBusActivity.class);
+			intent.putExtra("codi", codi);
+			startActivity(intent);
+		}
+	}
+
+	private void showEmptyToast() {
+		Context context = getApplicationContext();
+		CharSequence text = getResources().getString(R.string.emptyCode);
+		int duration = Toast.LENGTH_SHORT;
+		Toast toast = Toast.makeText(context, text, duration);
+		toast.show();
 	}
 
 	@Override
@@ -159,13 +191,18 @@ public class MainActivity extends ActionBarActivity implements DeleteDialogListe
 
 	@Override
 	public void onDialogPositiveClick(DialogFragment dialog) {
-		Log.e("MAIN","onPositiveClick");
-		Log.e("MAIN","Delete: " +  key);
+		Log.e("MAIN", "onPositiveClick");
+		Log.e("MAIN", "Delete: " + key);
 		SharedPreferences codeList = getSharedPreferences(PREFS_NAME, 0);
 		SharedPreferences.Editor editor = codeList.edit();
 		editor.remove(key);
 		editor.commit();
-		initializeListView();
+		adapter.remove(key);
+		adapter.notifyDataSetChanged();
+		if (adapter.isEmpty())
+			showEmptyText();
+		else
+			disableEmptyText();
 	}
 
 	@Override

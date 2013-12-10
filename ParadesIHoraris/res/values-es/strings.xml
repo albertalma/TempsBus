@@ -10,6 +10,7 @@
     <!-- Buttons -->
     <string name="search_button">Buscar</string>
     <string name="save_button">Guardar</string>
+    <string name="save_stop_button">Guardar Parada</string>
     <string name="cancel_button">Cancelar</string>
 
     <!-- Url -->
@@ -19,6 +20,7 @@
     <!-- Action Bar -->
     <string name="action_search">Buscar</string>
     <string name="action_new">Nueva Parada</string>
+    <string name="action_refresh">Actualizar</string>
     <string name="search_hint">Buscar Paradas de autobus</string>
 
     <!-- Save Codes -->
@@ -32,6 +34,14 @@
     <string name="cancel">No</string>
 
     <!-- Toast -->
-    <string name="empty">Alguno de los campos esta vacío</string>
+    <string name="emptyName">El nombre esta vacio</string>
+    <string name="emptyCode">El codigo de la parada esta vacio</string>
+    <string name="empty">El codigo de la parada no puede estar en blanco</string>
+
+    <!-- DiplayActivity -->
+    <string name="stopNumber">Número de parada: </string>
+    <string name="imminent">inminente </string>
+    <string name="error">Error al cargar la información de la parada</string>
+    <string name="network_error">Error en la conexión</string>
 
 </resources>

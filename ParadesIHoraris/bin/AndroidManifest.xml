@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.almacorp.paradesihoraris"
-    android:versionCode="1"
-    android:versionName="1.0" >
+    android:versionCode="2"
+    android:versionName="2.0" >
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
@@ -39,12 +39,21 @@
         <!-- Displays the time of a Stop -->
         <activity android:name="com.almacorp.paradesihoraris.activities.DisplayAmbTempsBusActivity" 
             android:screenOrientation="portrait">
+                        <!-- Receives the search request. -->
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+                <!-- No category needed, because the Intent will specify this class component -->
+            </intent-filter>
+
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.almacorp.paradesihoraris.activities.MainActivity" />
         </activity>
 
-        <!-- Displays the time of a Stop -->
+        <!-- Save Stops -->
         <activity android:name="com.almacorp.paradesihoraris.activities.AddCodeActivity"
             android:windowSoftInputMode="stateVisible|adjustResize" >
              <meta-data

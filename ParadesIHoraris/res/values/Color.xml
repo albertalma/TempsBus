@@ -2,7 +2,7 @@
 <resources>
 
     <color name="red_android">#CC0000</color>
-    <color name="grey_background">#CFCFCF</color>
+    <color name="grey_background">#CDCDCD</color>
     <color name="grey_dark">#909090</color>
 
 </resources>

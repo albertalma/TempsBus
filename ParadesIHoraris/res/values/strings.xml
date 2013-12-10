@@ -10,6 +10,7 @@
     <!-- Buttons -->
     <string name="search_button">Search</string>
     <string name="save_button">Save</string>
+    <string name="save_stop_button">Save Stop</string>
     <string name="cancel_button">Cancel</string>
 
     <!-- Url -->
@@ -19,6 +20,7 @@
     <!-- Action Bar -->
     <string name="action_search">Search</string>
     <string name="action_new">New Stop</string>
+    <string name="action_refresh">Refresh</string>
     <string name="search_hint">Search Bus Stop</string>
 
     <!-- Save Codes -->
@@ -32,6 +34,14 @@
     <string name="cancel">No</string>
 
     <!-- Toast -->
-    <string name="empty">There is any field empty</string>
+    <string name="emptyName">The name field is empty</string>
+    <string name="emptyCode">The code field is empty</string>
+    <string name="empty">The codi couldn\'t be empty</string>
+
+    <!-- DiplayActivity -->
+    <string name="stopNumber">Stop number: </string>
+    <string name="imminent">imminent </string>
+    <string name="error">Problem loading stop information</string>
+    <string name="network_error">Connectivity Problem</string>
 
 </resources>
